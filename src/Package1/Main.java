@@ -10,13 +10,6 @@ public class Main extends javax.swing.JFrame {
         initComponents();
         this.setLocationRelativeTo(null);
         
-        AdminUniverso au = new AdminUniverso("./General/allUniversos.cbm");
-        au.cargarArchivo();
-        DefaultComboBoxModel modelo = (DefaultComboBoxModel)cb_universos.getModel();
-        for (Universo u : au.getListaUniversos()) {
-            modelo.addElement(u);
-        }
-        cb_universos.setModel(modelo);
     }
 
     @SuppressWarnings("unchecked")
@@ -44,6 +37,7 @@ public class Main extends javax.swing.JFrame {
         cb_universos = new javax.swing.JComboBox<>();
         bt_guardar_serVivo = new javax.swing.JButton();
         jPanel4 = new javax.swing.JPanel();
+        bt_cargar_universos = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setResizable(false);
@@ -160,15 +154,28 @@ public class Main extends javax.swing.JFrame {
 
         jTabbedPane1.addTab("Agregar Ser Vivo", jPanel3);
 
+        bt_cargar_universos.setText("Cargar Universos");
+        bt_cargar_universos.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                bt_cargar_universosMouseClicked(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(jPanel4);
         jPanel4.setLayout(jPanel4Layout);
         jPanel4Layout.setHorizontalGroup(
             jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 550, Short.MAX_VALUE)
+            .addGroup(jPanel4Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(bt_cargar_universos, javax.swing.GroupLayout.PREFERRED_SIZE, 128, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(412, Short.MAX_VALUE))
         );
         jPanel4Layout.setVerticalGroup(
             jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 333, Short.MAX_VALUE)
+            .addGroup(jPanel4Layout.createSequentialGroup()
+                .addGap(35, 35, 35)
+                .addComponent(bt_cargar_universos, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(263, Short.MAX_VALUE))
         );
 
         jTabbedPane1.addTab("Cargar", jPanel4);
@@ -210,20 +217,33 @@ public class Main extends javax.swing.JFrame {
         String [] arr = {"Universos","General"};
         String [] arr2 = {r,"allUniversos.cbm"};
         for (int i = 0; i < 2; i++) {
-            AdminUniverso au = new AdminUniverso("./"+arr[i]+"/"+arr2[i]);
-            au.cargarArchivo();
-            au.setUniverso(u);
-            au.escribirArchivo();
+            AdminUniverso au2 =new AdminUniverso("./"+arr[i]+"/"+arr2[i]);
+            au2.cargarArchivo();
+            au2.setUniverso(u);
+            au2.escribirArchivo();
         }
         JOptionPane.showMessageDialog(this,"Universo agregado exitosamente!");
         tf_nombre_universo.setText("");
     }//GEN-LAST:event_bt_guardar_universoMouseClicked
 
     private void bt_guardar_serVivoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_bt_guardar_serVivoMouseClicked
-        if(cb_universos.getModel().equals(new DefaultComboBoxModel())){
-            JOptionPane.showMessageDialog(this, "Debe cargar los universos primero");
+        if(au.getListaUniversos().isEmpty()){
+            JOptionPane.showMessageDialog(this,"Debe agregar un universo primero");
+        } else{
+            JOptionPane.showMessageDialog(this, "bien");
         }
     }//GEN-LAST:event_bt_guardar_serVivoMouseClicked
+
+    private void bt_cargar_universosMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_bt_cargar_universosMouseClicked
+        cb_universos.setModel(new DefaultComboBoxModel());
+        au.cargarArchivo();
+        DefaultComboBoxModel modelo = (DefaultComboBoxModel)cb_universos.getModel();
+        for (Universo u : au.getListaUniversos()) {
+            modelo.addElement(u);
+        }
+        cb_universos.setModel(modelo);
+        JOptionPane.showMessageDialog(this, "Universos cargados");
+    }//GEN-LAST:event_bt_cargar_universosMouseClicked
 
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */
@@ -258,6 +278,7 @@ public class Main extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton bt_cargar_universos;
     private javax.swing.JButton bt_guardar_serVivo;
     private javax.swing.JButton bt_guardar_universo;
     private javax.swing.JComboBox<String> cb_universos;
@@ -280,4 +301,7 @@ public class Main extends javax.swing.JFrame {
     private javax.swing.JTextField jTextField6;
     private javax.swing.JTextField tf_nombre_universo;
     // End of variables declaration//GEN-END:variables
+
+    AdminUniverso au = new AdminUniverso("./General/allUniversos.cbm");
+    
 }
