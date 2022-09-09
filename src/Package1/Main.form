@@ -265,7 +265,7 @@
                       <Group type="102" attributes="0">
                           <EmptySpace max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                              <Component id="jProgressBar1" max="32767" attributes="0"/>
+                              <Component id="pb_cargar" max="32767" attributes="0"/>
                               <Component id="bt_cargar_universos" pref="275" max="32767" attributes="0"/>
                           </Group>
                           <EmptySpace pref="265" max="32767" attributes="0"/>
@@ -276,7 +276,7 @@
                   <Group type="103" groupAlignment="0" attributes="0">
                       <Group type="102" alignment="0" attributes="0">
                           <EmptySpace min="-2" pref="24" max="-2" attributes="0"/>
-                          <Component id="jProgressBar1" min="-2" pref="30" max="-2" attributes="0"/>
+                          <Component id="pb_cargar" min="-2" pref="30" max="-2" attributes="0"/>
                           <EmptySpace min="-2" pref="30" max="-2" attributes="0"/>
                           <Component id="bt_cargar_universos" min="-2" pref="35" max="-2" attributes="0"/>
                           <EmptySpace pref="214" max="32767" attributes="0"/>
@@ -293,7 +293,7 @@
                     <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="bt_cargar_universosMouseClicked"/>
                   </Events>
                 </Component>
-                <Component class="javax.swing.JProgressBar" name="jProgressBar1">
+                <Component class="javax.swing.JProgressBar" name="pb_cargar">
                   <Properties>
                     <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                       <Color blue="66" green="0" red="ff" type="rgb"/>

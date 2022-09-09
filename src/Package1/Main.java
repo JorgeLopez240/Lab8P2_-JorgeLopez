@@ -37,7 +37,7 @@ public class Main extends javax.swing.JFrame {
         bt_guardar_serVivo = new javax.swing.JButton();
         jPanel4 = new javax.swing.JPanel();
         bt_cargar_universos = new javax.swing.JButton();
-        jProgressBar1 = new javax.swing.JProgressBar();
+        pb_cargar = new javax.swing.JProgressBar();
         jPanel5 = new javax.swing.JPanel();
         jPanel6 = new javax.swing.JPanel();
         jLabel8 = new javax.swing.JLabel();
@@ -168,8 +168,8 @@ public class Main extends javax.swing.JFrame {
             }
         });
 
-        jProgressBar1.setForeground(new java.awt.Color(255, 0, 102));
-        jProgressBar1.setStringPainted(true);
+        pb_cargar.setForeground(new java.awt.Color(255, 0, 102));
+        pb_cargar.setStringPainted(true);
 
         javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(jPanel4);
         jPanel4.setLayout(jPanel4Layout);
@@ -178,7 +178,7 @@ public class Main extends javax.swing.JFrame {
             .addGroup(jPanel4Layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(jProgressBar1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(pb_cargar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(bt_cargar_universos, javax.swing.GroupLayout.DEFAULT_SIZE, 275, Short.MAX_VALUE))
                 .addContainerGap(265, Short.MAX_VALUE))
         );
@@ -186,7 +186,7 @@ public class Main extends javax.swing.JFrame {
             jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel4Layout.createSequentialGroup()
                 .addGap(24, 24, 24)
-                .addComponent(jProgressBar1, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(pb_cargar, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(30, 30, 30)
                 .addComponent(bt_cargar_universos, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(214, Short.MAX_VALUE))
@@ -341,6 +341,7 @@ public class Main extends javax.swing.JFrame {
     }//GEN-LAST:event_bt_guardar_serVivoMouseClicked
 
     private void bt_cargar_universosMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_bt_cargar_universosMouseClicked
+        int max =0;
         cb_universos.setModel(new DefaultComboBoxModel());
         au.cargarArchivo();
         as.cargarArchivo();
@@ -350,6 +351,13 @@ public class Main extends javax.swing.JFrame {
         }
         cb_universos.setModel(modelo);
         JOptionPane.showMessageDialog(this, "Datos cargados");
+        
+        int n = au.getListaUniversos().size()-1;
+        int m = as.getListaSeres().size()-1;
+        
+        max=n+m;
+        
+        pb_cargar.setMaximum(max);
     }//GEN-LAST:event_bt_cargar_universosMouseClicked
 
     private void jButton1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton1MouseClicked
@@ -423,8 +431,8 @@ public class Main extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel4;
     private javax.swing.JPanel jPanel5;
     private javax.swing.JPanel jPanel6;
-    private javax.swing.JProgressBar jProgressBar1;
     private javax.swing.JTabbedPane jTabbedPane1;
+    private javax.swing.JProgressBar pb_cargar;
     private javax.swing.JTextField tf_id_buscar;
     private javax.swing.JTextField tf_id_serVivo;
     private javax.swing.JTextField tf_nombre_buscar;
