@@ -6,6 +6,7 @@ import java.util.ArrayList;
 public class Universo {
 
     private String nombre;
+    private int cantidadSeresVivos;
     private ArrayList<SerVivo> seresVivos = new ArrayList();
 
     public Universo() {
@@ -13,6 +14,11 @@ public class Universo {
 
     public Universo(String nombre) {
         this.nombre = nombre;
+    }
+
+    public Universo(String nombre, int cantidadSeresVivos) {
+        this.nombre = nombre;
+        this.cantidadSeresVivos = cantidadSeresVivos;
     }
 
     public String getNombre() {
@@ -29,6 +35,14 @@ public class Universo {
 
     public void setSeresVivos(ArrayList<SerVivo> seresVivos) {
         this.seresVivos = seresVivos;
+    }
+
+    public int getCantidadSeresVivos() {
+        return cantidadSeresVivos;
+    }
+
+    public void setCantidadSeresVivos(int cantidadSeresVivos) {
+        this.cantidadSeresVivos = cantidadSeresVivos;
     }
 
     @Override

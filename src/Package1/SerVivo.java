@@ -16,7 +16,7 @@ public class SerVivo {
     public SerVivo(String nombre, String id, int poder, int years, Universo universo, String raza) {
         this.nombre = nombre;
         this.id = id;
-        this.poder = poder;
+        setPoder(poder);
         this.years = years;
         this.universo = universo;
         this.raza = raza;
@@ -43,7 +43,9 @@ public class SerVivo {
     }
 
     public void setPoder(int poder) {
-        this.poder = poder;
+        if(poder>=1 && poder <=10){
+            this.poder = poder;
+        }
     }
 
     public int getYears() {
