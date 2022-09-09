@@ -10,6 +10,8 @@ public class Universo implements Serializable{
     private int cantidadSeresVivos;
     private ArrayList<SerVivo> seresVivos = new ArrayList();
 
+    private static final long SerialVersionUID=444L;
+    
     public Universo() {
     }
 
