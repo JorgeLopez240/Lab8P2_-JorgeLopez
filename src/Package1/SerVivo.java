@@ -1,8 +1,10 @@
 
 package Package1;
 
-public class SerVivo {
-  
+import java.io.Serializable;
+
+public class SerVivo implements Serializable{
+
     private String nombre;
     private String id;
     private int poder; // 1-10
@@ -10,6 +12,8 @@ public class SerVivo {
     private Universo universo;
     private String raza; // Humano o Amanto
 
+    private static final long SerialVersionUID=555L;
+    
     public SerVivo() {
     }
 
