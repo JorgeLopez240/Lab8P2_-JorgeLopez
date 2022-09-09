@@ -14,7 +14,8 @@ public class Hilo_cargar extends Thread{
     @Override
     public void run(){
         while(true){
-            
+            barra.setValue(barra.getValue() + 1);
+            barra.setString(Integer.toString(barra.getValue()) + "%");
         }
     }
     
