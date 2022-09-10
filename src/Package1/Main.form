@@ -58,6 +58,9 @@
       </Layout>
       <SubComponents>
         <Container class="javax.swing.JTabbedPane" name="jTabbedPane1">
+          <Events>
+            <EventHandler event="stateChanged" listener="javax.swing.event.ChangeListener" parameters="javax.swing.event.ChangeEvent" handler="jTabbedPane1StateChanged"/>
+          </Events>
 
           <Layout class="org.netbeans.modules.form.compat2.layouts.support.JTabbedPaneSupportLayout"/>
           <SubComponents>
@@ -402,7 +405,7 @@
                           <Group type="103" groupAlignment="0" max="-2" attributes="0">
                               <Component id="jLabel15" min="-2" max="-2" attributes="0"/>
                               <Component id="cb_mod_serVivo_universo" max="32767" attributes="0"/>
-                              <Component id="jButton2" pref="171" max="32767" attributes="0"/>
+                              <Component id="bt_mod_serVivo" pref="171" max="32767" attributes="0"/>
                           </Group>
                           <EmptySpace pref="301" max="32767" attributes="0"/>
                       </Group>
@@ -434,7 +437,7 @@
                                   <EmptySpace max="-2" attributes="0"/>
                                   <Component id="tf_mod_ser_poder" min="-2" max="-2" attributes="0"/>
                               </Group>
-                              <Component id="jButton2" min="-2" pref="49" max="-2" attributes="0"/>
+                              <Component id="bt_mod_serVivo" min="-2" pref="49" max="-2" attributes="0"/>
                           </Group>
                           <EmptySpace type="separate" max="-2" attributes="0"/>
                           <Component id="jLabel13" min="-2" max="-2" attributes="0"/>
@@ -513,12 +516,12 @@
                     <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>
                   </AuxValues>
                 </Component>
-                <Component class="javax.swing.JButton" name="jButton2">
+                <Component class="javax.swing.JButton" name="bt_mod_serVivo">
                   <Properties>
                     <Property name="text" type="java.lang.String" value="Modificar"/>
                   </Properties>
                   <Events>
-                    <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="jButton2MouseClicked"/>
+                    <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="bt_mod_serVivoMouseClicked"/>
                   </Events>
                 </Component>
               </SubComponents>
@@ -582,11 +585,17 @@
                   </Properties>
                 </Component>
                 <Component class="javax.swing.JTextField" name="tf_mod_universo">
+                  <Events>
+                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="tf_mod_universoActionPerformed"/>
+                  </Events>
                 </Component>
                 <Component class="javax.swing.JButton" name="bt_mod_universo">
                   <Properties>
                     <Property name="text" type="java.lang.String" value="Modificar"/>
                   </Properties>
+                  <Events>
+                    <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="bt_mod_universoMouseClicked"/>
+                  </Events>
                 </Component>
               </SubComponents>
             </Container>
@@ -639,6 +648,9 @@
                   <Properties>
                     <Property name="text" type="java.lang.String" value="Eliminar"/>
                   </Properties>
+                  <Events>
+                    <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="bt_del_serVivoMouseClicked"/>
+                  </Events>
                 </Component>
               </SubComponents>
             </Container>

@@ -59,7 +59,7 @@ public class Main extends javax.swing.JFrame {
         tf_mod_ser_raza = new javax.swing.JTextField();
         jLabel15 = new javax.swing.JLabel();
         cb_mod_serVivo_universo = new javax.swing.JComboBox<>();
-        jButton2 = new javax.swing.JButton();
+        bt_mod_serVivo = new javax.swing.JButton();
         jPanel7 = new javax.swing.JPanel();
         cb_mod_universo = new javax.swing.JComboBox<>();
         jLabel16 = new javax.swing.JLabel();
@@ -71,6 +71,12 @@ public class Main extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setResizable(false);
+
+        jTabbedPane1.addChangeListener(new javax.swing.event.ChangeListener() {
+            public void stateChanged(javax.swing.event.ChangeEvent evt) {
+                jTabbedPane1StateChanged(evt);
+            }
+        });
 
         jLabel1.setText("Nombre:");
 
@@ -278,10 +284,10 @@ public class Main extends javax.swing.JFrame {
 
         jLabel15.setText("Universo");
 
-        jButton2.setText("Modificar");
-        jButton2.addMouseListener(new java.awt.event.MouseAdapter() {
+        bt_mod_serVivo.setText("Modificar");
+        bt_mod_serVivo.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jButton2MouseClicked(evt);
+                bt_mod_serVivoMouseClicked(evt);
             }
         });
 
@@ -307,7 +313,7 @@ public class Main extends javax.swing.JFrame {
                 .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(jLabel15)
                     .addComponent(cb_mod_serVivo_universo, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jButton2, javax.swing.GroupLayout.DEFAULT_SIZE, 171, Short.MAX_VALUE))
+                    .addComponent(bt_mod_serVivo, javax.swing.GroupLayout.DEFAULT_SIZE, 171, Short.MAX_VALUE))
                 .addContainerGap(301, Short.MAX_VALUE))
         );
         jPanel5Layout.setVerticalGroup(
@@ -333,7 +339,7 @@ public class Main extends javax.swing.JFrame {
                         .addComponent(jLabel12)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(tf_mod_ser_poder, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 49, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(bt_mod_serVivo, javax.swing.GroupLayout.PREFERRED_SIZE, 49, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addComponent(jLabel13)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -349,7 +355,18 @@ public class Main extends javax.swing.JFrame {
 
         jLabel16.setText("Nombre");
 
+        tf_mod_universo.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                tf_mod_universoActionPerformed(evt);
+            }
+        });
+
         bt_mod_universo.setText("Modificar");
+        bt_mod_universo.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                bt_mod_universoMouseClicked(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel7Layout = new javax.swing.GroupLayout(jPanel7);
         jPanel7.setLayout(jPanel7Layout);
@@ -382,6 +399,11 @@ public class Main extends javax.swing.JFrame {
         jTabbedPane1.addTab("Modificar Universo", jPanel7);
 
         bt_del_serVivo.setText("Eliminar");
+        bt_del_serVivo.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                bt_del_serVivoMouseClicked(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel8Layout = new javax.swing.GroupLayout(jPanel8);
         jPanel8.setLayout(jPanel8Layout);
@@ -498,6 +520,8 @@ public class Main extends javax.swing.JFrame {
 
     private void bt_cargar_universosMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_bt_cargar_universosMouseClicked
         int max;
+        max = max();
+        pb_cargar.setMaximum(max);
         cb_universos.setModel(new DefaultComboBoxModel());
         cb_mod_universo.setModel(new DefaultComboBoxModel());
         cb_mod_serVivo_universo.setModel(new DefaultComboBoxModel());
@@ -519,19 +543,21 @@ public class Main extends javax.swing.JFrame {
         cb_mod_universo.setModel(modelo);
         cb_mod_serVivo_universo.setModel(modelo);
         cb_mod_serVivo.setModel(modelo2);
-        int n = au.getListaUniversos().size()-1;
-        int m = as.getListaSeres().size()-1;
-        
-        max=n+m;
-        pb_cargar.setMaximum(max);
-        Hilo_cargar hc = new Hilo_cargar(pb_cargar);
+        boolean flag = true;
+        Hilo_cargar hc  = new Hilo_cargar(pb_cargar, flag, max);
         hc.start();
-        JOptionPane.showMessageDialog(this, "Datos cargados");
+        if(hc.getBarra().getValue()==max){
+            hc.setFlag(false);
+            hc.stop();
+        }
         
         
+        if(!(hc.isAlive())){
+            pb_cargar.setValue(0);
+            pb_cargar.setString(0+"%");
+            JOptionPane.showMessageDialog(this, "Datos Cargados");
+        }
         
-        pb_cargar.setValue(0);
-        pb_cargar.setString(0+ "%");
         
     }//GEN-LAST:event_bt_cargar_universosMouseClicked
 
@@ -553,17 +579,37 @@ public class Main extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_jButton1MouseClicked
 
-    private void jButton2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton2MouseClicked
+    private void bt_mod_serVivoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_bt_mod_serVivoMouseClicked
         as.cargarArchivo();
+       
         String nombre, id, raza;
         int poder, years;
         Universo u;
         nombre = tf_mod_ser_nom.getText();
         id = tf_mod_ser_id.getText();
-    }//GEN-LAST:event_jButton2MouseClicked
+        raza = tf_mod_ser_raza.getText();
+        poder = Integer.parseInt(tf_mod_ser_poder.getText());
+        years = Integer.parseInt(tf_mod_ser_years.getText());
+        u=(Universo) cb_mod_serVivo_universo.getSelectedItem();
+        as.cargarArchivo();
+        for (SerVivo s : as.getListaSeres()) {
+            if(s == x){
+                s.setNombre(nombre);
+                s.setId(id);
+                s.setPoder(poder);
+                s.setRaza(raza);
+                s.setUniverso(u);
+                s.setYears(years);
+            }
+        }
+        
+        as.escribirArchivo();
+        JOptionPane.showMessageDialog(this, "Modificacion exitosa!");
+    }//GEN-LAST:event_bt_mod_serVivoMouseClicked
 
     private void cb_mod_serVivoItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_cb_mod_serVivoItemStateChanged
         if(evt.getStateChange()==1){
+             x=(SerVivo) cb_mod_serVivo.getSelectedItem();
             SerVivo sv = (SerVivo) cb_mod_serVivo.getSelectedItem();
             tf_mod_ser_id.setText(sv.getId());
             tf_mod_ser_nom.setText(sv.getNombre());
@@ -577,6 +623,32 @@ public class Main extends javax.swing.JFrame {
             cb_mod_serVivo_universo.setSelectedItem((Universo)sv.getUniverso());
         }
     }//GEN-LAST:event_cb_mod_serVivoItemStateChanged
+
+    private void bt_del_serVivoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_bt_del_serVivoMouseClicked
+        as.cargarArchivo();
+        SerVivo v = (SerVivo) cb_delete_serVivo.getSelectedItem();
+        as.getListaSeres().remove(v);
+        JOptionPane.showMessageDialog(this, "borrado!");
+        as.escribirArchivo();
+    }//GEN-LAST:event_bt_del_serVivoMouseClicked
+
+    private void tf_mod_universoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tf_mod_universoActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_tf_mod_universoActionPerformed
+
+    private void bt_mod_universoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_bt_mod_universoMouseClicked
+        Universo u = (Universo) cb_mod_universo.getSelectedItem();
+        au.getListaUniversos().remove(u);
+        au.escribirArchivo();
+        JOptionPane.showMessageDialog(this, "borrado!");
+    }//GEN-LAST:event_bt_mod_universoMouseClicked
+
+    private void jTabbedPane1StateChanged(javax.swing.event.ChangeEvent evt) {//GEN-FIRST:event_jTabbedPane1StateChanged
+        if(jTabbedPane1.getSelectedIndex()!=4){
+            pb_cargar.setValue(0);
+            pb_cargar.setString(0+"&");
+        }
+    }//GEN-LAST:event_jTabbedPane1StateChanged
 
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */
@@ -610,11 +682,22 @@ public class Main extends javax.swing.JFrame {
         });
     }
 
+    
+    public int max (){
+        au.cargarArchivo();
+        as.cargarArchivo();
+        int u = au.getListaUniversos().size();
+        int s = as.getListaSeres().size();
+        int max = u+s;
+        return max;
+    }
+    
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton bt_cargar_universos;
     private javax.swing.JButton bt_del_serVivo;
     private javax.swing.JButton bt_guardar_serVivo;
     private javax.swing.JButton bt_guardar_universo;
+    private javax.swing.JButton bt_mod_serVivo;
     private javax.swing.JButton bt_mod_universo;
     private javax.swing.JComboBox<String> cb_delete_serVivo;
     private javax.swing.JComboBox<String> cb_mod_serVivo;
@@ -622,7 +705,6 @@ public class Main extends javax.swing.JFrame {
     private javax.swing.JComboBox<String> cb_mod_universo;
     private javax.swing.JComboBox<String> cb_universos;
     private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
@@ -667,5 +749,5 @@ public class Main extends javax.swing.JFrame {
 
     AdminUniverso au = new AdminUniverso("./General/allUniversos.cbm");
     AdminSerVivo as = new AdminSerVivo("./General/allSeresVivos.cbm");
-    
+    SerVivo x;
 }
