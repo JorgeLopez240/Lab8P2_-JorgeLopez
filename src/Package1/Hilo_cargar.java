@@ -40,7 +40,7 @@ public class Hilo_cargar extends Thread{
             barra.setString(Integer.toString(barra.getValue()) + "%");
             
             if(barra.getValue()==max){
-                
+                flag=false;
             }
             
             try {

@@ -546,18 +546,7 @@ public class Main extends javax.swing.JFrame {
         boolean flag = true;
         Hilo_cargar hc  = new Hilo_cargar(pb_cargar, flag, max);
         hc.start();
-        if(hc.getBarra().getValue()==max){
-            hc.setFlag(false);
-            hc.stop();
-        }
-        
-        
-        if(!(hc.isAlive())){
-            pb_cargar.setValue(0);
-            pb_cargar.setString(0+"%");
-            JOptionPane.showMessageDialog(this, "Datos Cargados");
-        }
-        
+        JOptionPane.showMessageDialog(this, "Datos Cargados");
         
     }//GEN-LAST:event_bt_cargar_universosMouseClicked
 
@@ -638,9 +627,15 @@ public class Main extends javax.swing.JFrame {
 
     private void bt_mod_universoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_bt_mod_universoMouseClicked
         Universo u = (Universo) cb_mod_universo.getSelectedItem();
-        au.getListaUniversos().remove(u);
+        au.cargarArchivo();
+        int c ;
+        for (Universo s : au.getListaUniversos()) {
+            if(s==u){
+               c=au.getListaUniversos().indexOf(s);
+               au.getListaUniversos().get(c).setNombre(tf_mod_universo.getText());
+            }
+        }
         au.escribirArchivo();
-        JOptionPane.showMessageDialog(this, "borrado!");
     }//GEN-LAST:event_bt_mod_universoMouseClicked
 
     private void jTabbedPane1StateChanged(javax.swing.event.ChangeEvent evt) {//GEN-FIRST:event_jTabbedPane1StateChanged
