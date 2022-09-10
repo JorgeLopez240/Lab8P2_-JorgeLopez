@@ -46,10 +46,28 @@ public class Main extends javax.swing.JFrame {
         tf_id_buscar = new javax.swing.JTextField();
         jButton1 = new javax.swing.JButton();
         jPanel5 = new javax.swing.JPanel();
-        jComboBox1 = new javax.swing.JComboBox<>();
+        cb_mod_serVivo = new javax.swing.JComboBox<>();
+        jLabel10 = new javax.swing.JLabel();
+        tf_mod_ser_nom = new javax.swing.JTextField();
+        jLabel11 = new javax.swing.JLabel();
+        tf_mod_ser_id = new javax.swing.JTextField();
+        jLabel12 = new javax.swing.JLabel();
+        tf_mod_ser_poder = new javax.swing.JTextField();
+        jLabel13 = new javax.swing.JLabel();
+        tf_mod_ser_years = new javax.swing.JTextField();
+        jLabel14 = new javax.swing.JLabel();
+        tf_mod_ser_raza = new javax.swing.JTextField();
+        jLabel15 = new javax.swing.JLabel();
+        cb_mod_serVivo_universo = new javax.swing.JComboBox<>();
+        jButton2 = new javax.swing.JButton();
         jPanel7 = new javax.swing.JPanel();
-        jComboBox2 = new javax.swing.JComboBox<>();
+        cb_mod_universo = new javax.swing.JComboBox<>();
+        jLabel16 = new javax.swing.JLabel();
+        tf_mod_universo = new javax.swing.JTextField();
+        bt_mod_universo = new javax.swing.JButton();
         jPanel8 = new javax.swing.JPanel();
+        cb_delete_serVivo = new javax.swing.JComboBox<>();
+        bt_del_serVivo = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setResizable(false);
@@ -73,7 +91,7 @@ public class Main extends javax.swing.JFrame {
                     .addComponent(jLabel1)
                     .addComponent(tf_nombre_universo)
                     .addComponent(bt_guardar_universo, javax.swing.GroupLayout.DEFAULT_SIZE, 150, Short.MAX_VALUE))
-                .addContainerGap(427, Short.MAX_VALUE))
+                .addContainerGap(606, Short.MAX_VALUE))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -84,7 +102,7 @@ public class Main extends javax.swing.JFrame {
                 .addComponent(tf_nombre_universo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addComponent(bt_guardar_universo)
-                .addContainerGap(264, Short.MAX_VALUE))
+                .addContainerGap(274, Short.MAX_VALUE))
         );
 
         jTabbedPane1.addTab("Agregar Universo", jPanel2);
@@ -130,7 +148,7 @@ public class Main extends javax.swing.JFrame {
                     .addComponent(jLabel7)
                     .addComponent(cb_universos, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(bt_guardar_serVivo, javax.swing.GroupLayout.DEFAULT_SIZE, 165, Short.MAX_VALUE))
-                .addContainerGap(162, Short.MAX_VALUE))
+                .addContainerGap(341, Short.MAX_VALUE))
         );
         jPanel3Layout.setVerticalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -161,7 +179,7 @@ public class Main extends javax.swing.JFrame {
                 .addComponent(jLabel6)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(tf_raza_serVivo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(104, Short.MAX_VALUE))
+                .addContainerGap(114, Short.MAX_VALUE))
         );
 
         jTabbedPane1.addTab("Agregar Ser Vivo", jPanel3);
@@ -185,7 +203,7 @@ public class Main extends javax.swing.JFrame {
                 .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(pb_cargar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(bt_cargar_universos, javax.swing.GroupLayout.DEFAULT_SIZE, 275, Short.MAX_VALUE))
-                .addContainerGap(302, Short.MAX_VALUE))
+                .addContainerGap(481, Short.MAX_VALUE))
         );
         jPanel4Layout.setVerticalGroup(
             jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -194,7 +212,7 @@ public class Main extends javax.swing.JFrame {
                 .addComponent(pb_cargar, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(30, 30, 30)
                 .addComponent(bt_cargar_universos, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(245, Short.MAX_VALUE))
+                .addContainerGap(255, Short.MAX_VALUE))
         );
 
         jTabbedPane1.addTab("Cargar", jPanel4);
@@ -222,7 +240,7 @@ public class Main extends javax.swing.JFrame {
                     .addComponent(jLabel9)
                     .addComponent(tf_id_buscar)
                     .addComponent(jButton1, javax.swing.GroupLayout.DEFAULT_SIZE, 150, Short.MAX_VALUE))
-                .addContainerGap(427, Short.MAX_VALUE))
+                .addContainerGap(606, Short.MAX_VALUE))
         );
         jPanel6Layout.setVerticalGroup(
             jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -237,29 +255,101 @@ public class Main extends javax.swing.JFrame {
                 .addComponent(tf_id_buscar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(37, 37, 37)
                 .addComponent(jButton1)
-                .addContainerGap(183, Short.MAX_VALUE))
+                .addContainerGap(193, Short.MAX_VALUE))
         );
 
         jTabbedPane1.addTab("Busqueda", jPanel6);
+
+        cb_mod_serVivo.addItemListener(new java.awt.event.ItemListener() {
+            public void itemStateChanged(java.awt.event.ItemEvent evt) {
+                cb_mod_serVivoItemStateChanged(evt);
+            }
+        });
+
+        jLabel10.setText("Nombre");
+
+        jLabel11.setText("Id");
+
+        jLabel12.setText("Poder");
+
+        jLabel13.setText("Años");
+
+        jLabel14.setText("Raza");
+
+        jLabel15.setText("Universo");
+
+        jButton2.setText("Modificar");
+        jButton2.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jButton2MouseClicked(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel5Layout = new javax.swing.GroupLayout(jPanel5);
         jPanel5.setLayout(jPanel5Layout);
         jPanel5Layout.setHorizontalGroup(
             jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel5Layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, 171, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(406, Short.MAX_VALUE))
+                .addGap(19, 19, 19)
+                .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(jLabel14)
+                    .addComponent(jLabel13)
+                    .addComponent(jLabel12)
+                    .addComponent(jLabel11)
+                    .addComponent(jLabel10)
+                    .addComponent(cb_mod_serVivo, 0, 171, Short.MAX_VALUE)
+                    .addComponent(tf_mod_ser_nom)
+                    .addComponent(tf_mod_ser_id)
+                    .addComponent(tf_mod_ser_poder)
+                    .addComponent(tf_mod_ser_years)
+                    .addComponent(tf_mod_ser_raza))
+                .addGap(104, 104, 104)
+                .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(jLabel15)
+                    .addComponent(cb_mod_serVivo_universo, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jButton2, javax.swing.GroupLayout.DEFAULT_SIZE, 171, Short.MAX_VALUE))
+                .addContainerGap(301, Short.MAX_VALUE))
         );
         jPanel5Layout.setVerticalGroup(
             jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel5Layout.createSequentialGroup()
-                .addGap(25, 25, 25)
-                .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(317, Short.MAX_VALUE))
+                .addGap(24, 24, 24)
+                .addComponent(cb_mod_serVivo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel10)
+                    .addComponent(jLabel15))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(tf_mod_ser_nom, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(cb_mod_serVivo_universo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addComponent(jLabel11)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(tf_mod_ser_id, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(jPanel5Layout.createSequentialGroup()
+                        .addComponent(jLabel12)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(tf_mod_ser_poder, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 49, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addComponent(jLabel13)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(tf_mod_ser_years, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(jLabel14)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(tf_mod_ser_raza, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         jTabbedPane1.addTab("Modifcar Ser Vivo", jPanel5);
+
+        jLabel16.setText("Nombre");
+
+        bt_mod_universo.setText("Modificar");
 
         javax.swing.GroupLayout jPanel7Layout = new javax.swing.GroupLayout(jPanel7);
         jPanel7.setLayout(jPanel7Layout);
@@ -267,62 +357,81 @@ public class Main extends javax.swing.JFrame {
             jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel7Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jComboBox2, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(417, Short.MAX_VALUE))
+                .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                    .addComponent(bt_mod_universo, javax.swing.GroupLayout.DEFAULT_SIZE, 160, Short.MAX_VALUE)
+                    .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                        .addComponent(cb_mod_universo, 0, 160, Short.MAX_VALUE)
+                        .addComponent(jLabel16)
+                        .addComponent(tf_mod_universo)))
+                .addContainerGap(596, Short.MAX_VALUE))
         );
         jPanel7Layout.setVerticalGroup(
             jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel7Layout.createSequentialGroup()
                 .addGap(22, 22, 22)
-                .addComponent(jComboBox2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(320, Short.MAX_VALUE))
+                .addComponent(cb_mod_universo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(jLabel16)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(tf_mod_universo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(31, 31, 31)
+                .addComponent(bt_mod_universo, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(198, Short.MAX_VALUE))
         );
 
         jTabbedPane1.addTab("Modificar Universo", jPanel7);
+
+        bt_del_serVivo.setText("Eliminar");
 
         javax.swing.GroupLayout jPanel8Layout = new javax.swing.GroupLayout(jPanel8);
         jPanel8.setLayout(jPanel8Layout);
         jPanel8Layout.setHorizontalGroup(
             jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 587, Short.MAX_VALUE)
+            .addGroup(jPanel8Layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                    .addComponent(bt_del_serVivo, javax.swing.GroupLayout.DEFAULT_SIZE, 170, Short.MAX_VALUE)
+                    .addComponent(cb_delete_serVivo, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(586, Short.MAX_VALUE))
         );
         jPanel8Layout.setVerticalGroup(
             jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 364, Short.MAX_VALUE)
+            .addGroup(jPanel8Layout.createSequentialGroup()
+                .addGap(22, 22, 22)
+                .addComponent(cb_delete_serVivo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(bt_del_serVivo, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(280, Short.MAX_VALUE))
         );
 
-        jTabbedPane1.addTab("Eliminar Seres Vivos", jPanel8);
+        jTabbedPane1.addTab("Eliminar Ser Vivo", jPanel8);
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                .addContainerGap(23, Short.MAX_VALUE)
-                .addComponent(jTabbedPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 592, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(20, 20, 20))
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jTabbedPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 771, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(19, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jTabbedPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 392, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(67, 67, 67))
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jTabbedPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(32, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 0, Short.MAX_VALUE))
+            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 406, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 23, Short.MAX_VALUE))
+            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
 
         pack();
@@ -388,15 +497,28 @@ public class Main extends javax.swing.JFrame {
     }//GEN-LAST:event_bt_guardar_serVivoMouseClicked
 
     private void bt_cargar_universosMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_bt_cargar_universosMouseClicked
-        int max =0;
+        int max;
         cb_universos.setModel(new DefaultComboBoxModel());
+        cb_mod_universo.setModel(new DefaultComboBoxModel());
+        cb_mod_serVivo_universo.setModel(new DefaultComboBoxModel());
+        cb_mod_serVivo.setModel(new DefaultComboBoxModel());
+        cb_delete_serVivo.setModel(new DefaultComboBoxModel());
         au.cargarArchivo();
         as.cargarArchivo();
         DefaultComboBoxModel modelo = (DefaultComboBoxModel)cb_universos.getModel();
+        DefaultComboBoxModel modelo2 = (DefaultComboBoxModel)cb_mod_serVivo.getModel();
         for (Universo u : au.getListaUniversos()) {
             modelo.addElement(u);
         }
+        
+        for (SerVivo s : as.getListaSeres()) {
+            modelo2.addElement(s);
+        }
+        cb_delete_serVivo.setModel(modelo2);
         cb_universos.setModel(modelo);
+        cb_mod_universo.setModel(modelo);
+        cb_mod_serVivo_universo.setModel(modelo);
+        cb_mod_serVivo.setModel(modelo2);
         int n = au.getListaUniversos().size()-1;
         int m = as.getListaSeres().size()-1;
         
@@ -430,6 +552,31 @@ public class Main extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(this, "Ser vivo no se encuentra en el sistema.");
         }
     }//GEN-LAST:event_jButton1MouseClicked
+
+    private void jButton2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton2MouseClicked
+        as.cargarArchivo();
+        String nombre, id, raza;
+        int poder, years;
+        Universo u;
+        nombre = tf_mod_ser_nom.getText();
+        id = tf_mod_ser_id.getText();
+    }//GEN-LAST:event_jButton2MouseClicked
+
+    private void cb_mod_serVivoItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_cb_mod_serVivoItemStateChanged
+        if(evt.getStateChange()==1){
+            SerVivo sv = (SerVivo) cb_mod_serVivo.getSelectedItem();
+            tf_mod_ser_id.setText(sv.getId());
+            tf_mod_ser_nom.setText(sv.getNombre());
+            String p="";
+            p+=sv.getPoder();
+            tf_mod_ser_poder.setText(p);
+            tf_mod_ser_raza.setText(sv.getRaza());
+            String a = "";
+            a+= sv.getYears();
+            tf_mod_ser_years.setText(a);
+            cb_mod_serVivo_universo.setSelectedItem((Universo)sv.getUniverso());
+        }
+    }//GEN-LAST:event_cb_mod_serVivoItemStateChanged
 
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */
@@ -465,13 +612,25 @@ public class Main extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton bt_cargar_universos;
+    private javax.swing.JButton bt_del_serVivo;
     private javax.swing.JButton bt_guardar_serVivo;
     private javax.swing.JButton bt_guardar_universo;
+    private javax.swing.JButton bt_mod_universo;
+    private javax.swing.JComboBox<String> cb_delete_serVivo;
+    private javax.swing.JComboBox<String> cb_mod_serVivo;
+    private javax.swing.JComboBox<String> cb_mod_serVivo_universo;
+    private javax.swing.JComboBox<String> cb_mod_universo;
     private javax.swing.JComboBox<String> cb_universos;
     private javax.swing.JButton jButton1;
-    private javax.swing.JComboBox<String> jComboBox1;
-    private javax.swing.JComboBox<String> jComboBox2;
+    private javax.swing.JButton jButton2;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel10;
+    private javax.swing.JLabel jLabel11;
+    private javax.swing.JLabel jLabel12;
+    private javax.swing.JLabel jLabel13;
+    private javax.swing.JLabel jLabel14;
+    private javax.swing.JLabel jLabel15;
+    private javax.swing.JLabel jLabel16;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
@@ -492,6 +651,12 @@ public class Main extends javax.swing.JFrame {
     private javax.swing.JProgressBar pb_cargar;
     private javax.swing.JTextField tf_id_buscar;
     private javax.swing.JTextField tf_id_serVivo;
+    private javax.swing.JTextField tf_mod_ser_id;
+    private javax.swing.JTextField tf_mod_ser_nom;
+    private javax.swing.JTextField tf_mod_ser_poder;
+    private javax.swing.JTextField tf_mod_ser_raza;
+    private javax.swing.JTextField tf_mod_ser_years;
+    private javax.swing.JTextField tf_mod_universo;
     private javax.swing.JTextField tf_nombre_buscar;
     private javax.swing.JTextField tf_nombre_serVivo;
     private javax.swing.JTextField tf_nombre_universo;
