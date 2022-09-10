@@ -545,7 +545,7 @@
                               <Group type="103" groupAlignment="0" max="-2" attributes="0">
                                   <Component id="cb_mod_universo" alignment="0" pref="160" max="32767" attributes="0"/>
                                   <Component id="jLabel16" alignment="0" min="-2" max="-2" attributes="0"/>
-                                  <Component id="tf_mod_universo" alignment="0" max="32767" attributes="0"/>
+                                  <Component id="tf_modificar_nombre_de_un_universo" alignment="0" max="32767" attributes="0"/>
                               </Group>
                           </Group>
                           <EmptySpace pref="596" max="32767" attributes="0"/>
@@ -560,7 +560,7 @@
                           <EmptySpace type="separate" max="-2" attributes="0"/>
                           <Component id="jLabel16" min="-2" max="-2" attributes="0"/>
                           <EmptySpace max="-2" attributes="0"/>
-                          <Component id="tf_mod_universo" min="-2" max="-2" attributes="0"/>
+                          <Component id="tf_modificar_nombre_de_un_universo" min="-2" max="-2" attributes="0"/>
                           <EmptySpace min="-2" pref="31" max="-2" attributes="0"/>
                           <Component id="bt_mod_universo" min="-2" pref="43" max="-2" attributes="0"/>
                           <EmptySpace pref="198" max="32767" attributes="0"/>
@@ -584,9 +584,9 @@
                     <Property name="text" type="java.lang.String" value="Nombre"/>
                   </Properties>
                 </Component>
-                <Component class="javax.swing.JTextField" name="tf_mod_universo">
+                <Component class="javax.swing.JTextField" name="tf_modificar_nombre_de_un_universo">
                   <Events>
-                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="tf_mod_universoActionPerformed"/>
+                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="tf_modificar_nombre_de_un_universoActionPerformed"/>
                   </Events>
                 </Component>
                 <Component class="javax.swing.JButton" name="bt_mod_universo">

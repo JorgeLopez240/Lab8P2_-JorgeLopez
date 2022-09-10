@@ -63,7 +63,7 @@ public class Main extends javax.swing.JFrame {
         jPanel7 = new javax.swing.JPanel();
         cb_mod_universo = new javax.swing.JComboBox<>();
         jLabel16 = new javax.swing.JLabel();
-        tf_mod_universo = new javax.swing.JTextField();
+        tf_modificar_nombre_de_un_universo = new javax.swing.JTextField();
         bt_mod_universo = new javax.swing.JButton();
         jPanel8 = new javax.swing.JPanel();
         cb_delete_serVivo = new javax.swing.JComboBox<>();
@@ -355,9 +355,9 @@ public class Main extends javax.swing.JFrame {
 
         jLabel16.setText("Nombre");
 
-        tf_mod_universo.addActionListener(new java.awt.event.ActionListener() {
+        tf_modificar_nombre_de_un_universo.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                tf_mod_universoActionPerformed(evt);
+                tf_modificar_nombre_de_un_universoActionPerformed(evt);
             }
         });
 
@@ -379,7 +379,7 @@ public class Main extends javax.swing.JFrame {
                     .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                         .addComponent(cb_mod_universo, 0, 160, Short.MAX_VALUE)
                         .addComponent(jLabel16)
-                        .addComponent(tf_mod_universo)))
+                        .addComponent(tf_modificar_nombre_de_un_universo)))
                 .addContainerGap(596, Short.MAX_VALUE))
         );
         jPanel7Layout.setVerticalGroup(
@@ -390,7 +390,7 @@ public class Main extends javax.swing.JFrame {
                 .addGap(18, 18, 18)
                 .addComponent(jLabel16)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(tf_mod_universo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(tf_modificar_nombre_de_un_universo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(31, 31, 31)
                 .addComponent(bt_mod_universo, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(198, Short.MAX_VALUE))
@@ -621,20 +621,15 @@ public class Main extends javax.swing.JFrame {
         as.escribirArchivo();
     }//GEN-LAST:event_bt_del_serVivoMouseClicked
 
-    private void tf_mod_universoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tf_mod_universoActionPerformed
+    private void tf_modificar_nombre_de_un_universoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tf_modificar_nombre_de_un_universoActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_tf_mod_universoActionPerformed
+    }//GEN-LAST:event_tf_modificar_nombre_de_un_universoActionPerformed
 
     private void bt_mod_universoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_bt_mod_universoMouseClicked
-        Universo u = (Universo) cb_mod_universo.getSelectedItem();
         au.cargarArchivo();
-        int c ;
-        for (Universo s : au.getListaUniversos()) {
-            if(s==u){
-               c=au.getListaUniversos().indexOf(s);
-               au.getListaUniversos().get(c).setNombre(tf_mod_universo.getText());
-            }
-        }
+        Universo u = (Universo) cb_mod_universo.getSelectedItem();
+        //int index = au.getListaUniversos().indexOf(u);
+        //au.getListaUniversos().get(index).setNombre(tf);
         au.escribirArchivo();
     }//GEN-LAST:event_bt_mod_universoMouseClicked
 
@@ -733,7 +728,7 @@ public class Main extends javax.swing.JFrame {
     private javax.swing.JTextField tf_mod_ser_poder;
     private javax.swing.JTextField tf_mod_ser_raza;
     private javax.swing.JTextField tf_mod_ser_years;
-    private javax.swing.JTextField tf_mod_universo;
+    private javax.swing.JTextField tf_modificar_nombre_de_un_universo;
     private javax.swing.JTextField tf_nombre_buscar;
     private javax.swing.JTextField tf_nombre_serVivo;
     private javax.swing.JTextField tf_nombre_universo;
