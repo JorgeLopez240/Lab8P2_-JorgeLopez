@@ -71,7 +71,7 @@ public class AdminUniverso {
         FileOutputStream fw = null;
         ObjectOutputStream bw = null;
         try {
-            fw = new FileOutputStream(archivo);
+            fw = new FileOutputStream(archivo, false);
             bw = new ObjectOutputStream(fw);
             for (Universo t : listaUniversos) {
                 bw.writeObject(t);
